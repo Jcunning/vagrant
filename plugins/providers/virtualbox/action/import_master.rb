@@ -16,7 +16,7 @@ module VagrantPlugins
           env[:master_id] = master_id_file.read.chomp if master_id_file.file?          
           if env[:master_id] && env[:machine].provider.driver.vm_exists?(env[:master_id])
             # Master VM already exists -> nothing to do - continue.
-            @app.call(env) 
+            return @app.call(env) 
           end          
           
           env[:ui].info I18n.t("vagrant.actions.vm.clone.importing", name: env[:machine].box.name)
